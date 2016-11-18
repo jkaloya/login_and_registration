@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Login and Registration</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'loginandregistration/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+        <div id="wrapper">
+                <h3>Welcome {{ first_name }} {{ last_name }}!</h3>
+        </div>
+        <form action='/logout'>
+            {% csrf_token %}
+            <input type='submit' name='logout' value='Logout'/>
+        </form>
+  </body>
+</html>

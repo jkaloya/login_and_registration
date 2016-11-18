@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login and Registration</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'loginandregistration/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class='box'>
+                <h3>Register</h3>
+                <form action='/validation' method='post'>
+                    {% csrf_token %}
+                    <p>First Name: <input type="text" name="first_name"></p>
+                    <p>Last Name: <input type="text" name="last_name"></p>
+                    <p>Email: <input type="text" name="email"></p>
+                    <p>Password: <input type="password" name="password"></p>
+                    <p>Confirm Password: <input type="password" name="confirm_password"></p>
+                    <input type='submit' name='register' value='Register'/>
+                </form>
+                {% if messages %}
+                    <ul class='messages'>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="box">
+                <h3>Login</h3>
+                <form action='/login' method='post'>
+                    {% csrf_token %}
+                    <p>Email: <input type="text" name="email"></p>
+                    <p>Password: <input type="password" name="password"></p>
+                    <input type='submit' name='login' value='Login'/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
